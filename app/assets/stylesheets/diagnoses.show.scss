@@ -1,0 +1,40 @@
+.diagno {
+    background-image: asset-url("binsen.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    min-height: 100vh;
+    font-family: 'Shippori Mincho B1', sans-serif;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.intoro {
+    text-align: center;
+    padding-top: 60px;
+}
+
+.intoro h3 {
+    font-size: 25px;
+}
+
+.intoro p {
+    margin-top: 150px;
+    font-size: 22px;
+}
+
+.diagnosis-result {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.diagnosis-result h2 {
+    font-size: 30px;
+    color: rgb(118, 72, 31);
+    margin-bottom: 60px;
+}
+
+.diagnosis-result p {
+    font-size: 15px;
+    line-height: 1.8;
+}

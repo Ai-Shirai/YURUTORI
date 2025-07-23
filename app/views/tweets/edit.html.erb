@@ -1,0 +1,98 @@
+  <div class="title">新規投稿</div>
+
+<%= form_for @tweet do |f| %>
+   <div class="field">
+    <%= f.label :観光地名 %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :詳細・おすすめポイント  %>
+    <%= f.text_area :detail, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :所在地  %>
+    <%= f.text_area :adress, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :所要時間  %>
+    <%= f.number_field :time, step: 0.1, :size => 10 %> 時間
+  </div>
+
+  <div class="field">
+    <%= f.label :費用  %>
+    <%= f.number_field :cost, step: 0.1, :size => 10 %> 万円
+  </div>
+
+  <div class="field">
+    <%= f.label :アクセス情報  %>
+    <%= f.text_area :access, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div id="map" style="height: 300px; width: 400px; margin-bottom: 10px;"></div>
+
+  <%= f.text_field :name %>
+  <%= f.text_area :detail %>
+
+  <%= f.hidden_field :lat, id: 'lat', value: @tweet.lat %>
+  <%= f.hidden_field :lng, id: 'lng', value: @tweet.lng %>
+  
+ <script>
+  function initMap() {
+    const existingLocation = {
+      lat: <%= @tweet.lat || 35.681236 %>,
+      lng: <%= @tweet.lng || 139.767125 %>
+    };
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: existingLocation
+    });
+
+    const marker = new google.maps.Marker({
+      position: existingLocation,
+      map: map,
+      draggable: true
+    });
+
+    document.getElementById("lat").value = existingLocation.lat;
+    document.getElementById("lng").value = existingLocation.lng;
+
+    marker.addListener("dragend", function () {
+      const pos = marker.getPosition();
+      document.getElementById("lat").value = pos.lat();
+      document.getElementById("lng").value = pos.lng();
+    });
+  }
+ </script>
+
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRKeozR0WtnEJnb3MDcsmgHMWp-2LEe4o&callback=initMap" async defer></script>
+
+  <div class='form-group'>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div class='form-check'>
+        <%= tag.label class: 'form-check-label' do %>
+          <%= tag.check_box class: 'form-check-input' %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "編集する" %>
+<% end %>
+
+<%= form_tag(add_tag_tweet_path(@tweet), method: :post) do %>
+  <div>
+    <%= label_tag :tag, "新しいタグを追加" %>
+    <%= text_field_tag :tag %>
+    <%= submit_tag 'タグを追加' %>
+  </div>
+<% end %>

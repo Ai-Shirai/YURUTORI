@@ -1,0 +1,80 @@
+<%= stylesheet_link_tag 'index', media: 'all' %>
+
+<div class="colored-band"></div>
+
+<div class="slideshow-wrapper">
+  <div class="slideshow">
+    <img src="<%= asset_path('top1.jpg') %>" class="slide active">
+    <img src="<%= asset_path('top2.jpg') %>" class="slide">
+  </div>
+</div>
+
+<div class="diagnose">
+<h3>～旅行プラン診断～</h3>
+<h4>
+あなたにぴったりの旅行プランの立て方が見つかります。<br>
+</h4>
+<%= link_to "スタート", new_diagnosis_path, class: 'cuty-button' %>
+</div>
+
+<img src="<%= asset_path('line.jpg') %>" alt="区切り線" class="divider">
+
+<div class="title">
+  <h3>おすすめスポット</h3>
+</div>
+<div class="t-list">
+    <%= link_to "新規投稿", new_tweet_path, class: "t-link" %>
+</div>
+
+<%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+  <div class="tag-list">
+    <% Tag.all.each do |t| %>
+        <li>
+          <label class="tag-label">
+            <%= check_box :tag_ids, t.name %><%= t.name %>
+          </label>
+        </li>
+    <% end %>
+  </div>  
+
+  <div class="button-wrapper">
+    <%= submit_tag '検索', class: 'search-button' %>
+  </div>
+<% end %>
+
+<div class="tweets-container">
+  <% @tweets.each do |t| %>
+    <div class="tweet">
+      <% if t.image.attached? %>
+          <%= image_tag t.image, size: '250x200'%>
+      <% end %>
+      
+      <p>観光地名：<%= t.name %></p>
+      <p>詳細・おすすめポイント：<%= t.detail %></p>
+      <p>所在地：<%= t.adress %></p>
+      <p>所要時間：<%= t.time %> 時間</p>
+      <p>費用：<%= t.cost %> 万円</p>
+      <p>アクセス情報：<%= t.access %></p>
+
+      <% t.tags.each do |tag| %>
+       <span><%= tag.name %></span>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+          <%= button_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+              <i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+        <% else %>
+          <%= button_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <i class="far fa-heart"></i><%= t.likes.count %>
+      <% end %>
+
+      <p><%= link_to "詳細へ", tweet_path(t.id) %>
+    </div>
+  <% end %>
+</div>

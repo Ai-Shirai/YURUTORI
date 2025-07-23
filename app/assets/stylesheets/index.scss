@@ -1,0 +1,212 @@
+.slideshow-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 306px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 1;
+  box-shadow: none !important;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+
+.diagnose {
+  height: 118px;
+  margin: 60px auto;
+  padding: 34px 30px;
+  text-align: center;
+  position: relative;
+  font-family: 'Shippori Mincho B1', sans-serif;
+}
+
+
+.diagnose h3 {
+  font-size: 30px;
+  color: #3b352d;
+  font-weight: bold;
+}
+
+.diagnose h4 {
+  font-size: 17px;
+  color: #3b352d;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.cuty-button {
+  display: inline-block;
+  padding: 10px 28px;
+  background: linear-gradient(to bottom right, #fdfcfa, #f3f0ee);
+  color: #4a3f35;
+  border: 2px solid #d5c9c1;
+  border-radius: 4px;
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  box-shadow:
+    0 0 0 4px #f9f6f2,
+    0 4px 8px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.cuty-button:hover {
+  background: linear-gradient(to bottom right, #f3f0ee, #e8e1dc);
+  color: #2e2620;
+  box-shadow:
+    0 0 0 4px #eae4dd,
+    0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.divider {
+  display: block;
+  margin: 100px auto;
+  width: 85%;
+  max-width: 700px;
+  height: auto;
+}
+
+
+.title {
+  font-family: 'Shippori Mincho B1', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 130px;
+  text-align: center;
+  line-height: 1.0;
+  margin-bottom: 20px;
+}
+
+.t-list {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.t-link {
+  display: inline-block;
+  font-family: 'Shippori Mincho B1', sans-serif;
+  line-height: 1.0;
+  text-decoration: none;
+  color: #4d4237;
+  font-size: 20px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.t-link:hover {
+  color: #c06b89;
+}
+
+
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 1000px;
+  margin: 0 auto; 
+}
+
+.tag-list li {
+  display: inline-block;
+}
+
+.tag-label {
+  display: flex;
+  flex-direction: row;
+  padding-left: 18px;
+  padding-top: 11px;
+  background-image: url('/assets/fusen.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 145px;
+  height: 35px;
+  font-size: 13px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  gap: 2px;
+}
+
+.tag-label input[type="checkbox"] {
+  transform: scale(0.9);
+  margin-bottom: 15px;
+}
+
+.button-wrapper {
+  max-width: 1200px;
+  text-align: right;
+}
+
+.search-button {
+  padding: 10px;
+  font-size: 15px !important; 
+  font-weight: bold;
+  border-radius: 6px;
+  background-color: #fce4ec;
+  color: #4b3f34;
+  border: 2px solid #d0a7b6;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  line-height: 1;
+  width: auto;
+  max-width: 100px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.search-button:hover {
+  background-color: #f7b3cb;
+  color: white;
+}
+
+.tweets-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+.tweet {
+  width: 30%;
+  max-width: 280px;
+  background: white;
+  padding: 10px 10px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.tweet img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}

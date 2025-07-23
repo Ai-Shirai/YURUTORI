@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>YURUTORI</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/c37db69994.js"  crossorigin="anonymous"></script> 
+
+    <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    <%= javascript_importmap_tags %>
+  </head>
+
+ <body>
+  <header>
+   <div class="header-list">
+    <ul>
+     <% if user_signed_in? %>
+      <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'cute-button' %></li>
+     <% else %>
+      <li><%= link_to "新規登録", new_user_registration_path, class: "hover-link" %></li>
+      <li><%= link_to "ログイン", new_user_session_path, class: "hover-link" %></li>
+     <% end %>
+    </ul>
+   </div>
+  </header>
+  <main>
+   <%= yield %>
+  </main>
+
+
+  <%= javascript_include_tag "application", type: "module" %>
+ </body>
+
+</html>

@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+  font-family: 'Nikumaru';
+  src: asset-url('nikumaru-font.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Yosugara';
+  src: asset-url('yosugara.ttf') format('truetype');
+}
+
+@import "index";
+
+ * {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: #e1d2b7;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ログアウトボタン */
+.cute-button {
+  position: relative;
+  display: inline-block;
+  background: none;
+  border: none;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cute-button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #a97487;
+  transition: width 0.3s;
+}
+
+.cute-button:hover::after {
+  width: 100%;
+}
+
+/* 新規登録・ログインリンク */
+.hover-link {
+  position: relative;
+  display: inline-block;
+  color: white;
+}
+
+.hover-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #a97487;
+  transition: width 0.3s;
+}
+
+.hover-link:hover::after {
+  width: 100%;
+}
+
+header a {
+  color: white; 
+  text-decoration: none; 
+}
+
+.header-list {
+  display: flex;
+  align-items: center;
+}
+header ul {
+  display: flex;
+}
+header li {
+  list-style: none;
+  margin-right: 40px;
+}
