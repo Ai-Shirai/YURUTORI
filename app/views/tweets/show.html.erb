@@ -1,104 +1,105 @@
-<h3>観光地詳細</h3>
-<div class="tweet">
-  <% if @tweet.image.attached? %>
-    <%= image_tag @tweet.image, size: '250x200'%>
-  <% end %>
+<div class="tweet-detail-wrapper">
+  <div class="tweet-detail-box">
+    <% if @tweet.image.attached? %>
+      <%= image_tag @tweet.image, class: "detail-image" %>
+    <% end %>
 
-  <p>観光地名：<%= @tweet.name %></p>
-  <p>詳細・おすすめポイント：<%= @tweet.detail %></p>
-  <p>所在地：<%= @tweet.adress %></p>
-  <p>所要時間：<%= @tweet.time %> 時間</p>
-  <p>費用：<%= @tweet.cost %> 万円</p>
-  <p>アクセス情報：<%= @tweet.access %></p>
+    <div class="detail-line">
+      <p class="spot-name"><%= @tweet.name %></p>
+    </div>
+    <div class="detail-line">
+      <p><strong>おすすめポイント：</strong><br><%= @tweet.detail %></p>
+    </div>
+    <div class="detail-line">
+      <p><strong>所在地：</strong><br><%= @tweet.adress %></p>
+    </div>
+    <div class="detail-line">
+      <p><strong>所要時間：</strong><br><%= @tweet.time %> 時間</p>
+    </div>
+    <div class="detail-line">
+      <p><strong>費用：</strong><br><%= @tweet.cost %> 万円</p>
+    </div>
+    <div class="detail-line">
+      <p><strong>アクセス：</strong><br><%= @tweet.access %></p>
+    </div>
 
-  <% @tweet.tags.each do |tag| %>
-   <span class="badge bg-secondary"><%= tag.name %></span>
-  <% end %>
+    <div class="tag-group">
+      <% @tweet.tags.each do |tag| %>
+        <span class="tag-badge">#<%= tag.name %></span>
+      <% end %>
+    </div>
 
-  <div id="map" style="height: 400px; width: 500px;"></div>
 
- <script>
-  function initMap() {
-    const spotLocation = {
-      lat: <%= @tweet.lat || 35.681236 %>,
-      lng: <%= @tweet.lng || 139.767125 %>
-    };
 
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 15,
-      center: spotLocation
-    });
 
-    new google.maps.Marker({
-      position: spotLocation,
-      map: map,
-      title: "<%= @tweet.name %>"
-    });
+    <div id="map" style="height: 300px;"
+     data-latitude="<%= @tweet.lat %>"
+     data-longitude="<%= @tweet.lng %>"></div>
+  
+    <script>
+      function initShowMap() {
+        const mapElement = document.getElementById("map");
+        if (!mapElement) return;
 
-    const service = new google.maps.places.PlacesService(map);
-    service.nearbySearch({
-      location: spotLocation,
-      radius: 1000,
-      type: ['restaurant']
-    }, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        results.forEach(place => {
-          new google.maps.Marker({
-            position: place.geometry.location,
-            map: map,
-            title: place.name
-          });
+        const lat = parseFloat(mapElement.dataset.latitude);
+        const lng = parseFloat(mapElement.dataset.longitude);
+
+        const map = new google.maps.Map(mapElement, {
+          zoom: 14,
+          center: { lat: lat, lng: lng }
+        });
+
+        new google.maps.Marker({
+          position: { lat: lat, lng: lng },
+          map: map
         });
       }
-    });
-  }
- </script>
+    </script>
 
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRKeozR0WtnEJnb3MDcsmgHMWp-2LEe4o&callback=initMap&libraries=places" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRKeozR0WtnEJnb3MDcsmgHMWp-2LEe4o&callback=initShowMap" async defer></script>
 
-  <% if user_signed_in? %>
-   <% if current_user.already_liked?(@tweet) %>
-        <%= button_to tweet_like_path(@tweet), method: :delete do %>
-          <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+
+
+
+    <div class="like-section">
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(@tweet) %>
+          <%= button_to tweet_like_path(@tweet), method: :delete, class: "like-button" do %>
+            <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+          <% end %>
+        <% else %>
+          <%= button_to tweet_likes_path(@tweet), method: :post, class: "like-button" do %>
+            🤍 <%= @tweet.likes.count %>
+          <% end %>
         <% end %>
       <% else %>
-        <%= button_to tweet_likes_path(@tweet), method: :post do %>
-          <i class="far fa-heart"></i><%= @tweet.likes.count %>
+        🤍 <%= @tweet.likes.count %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="comment-wrapper">
+    <h4>コメント</h4>
+    <% @comments.each do |c| %>
+      <div class="comment-box">
+        <p class="comment-date"><%= c.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
+        <p class="comment-content"><%= c.content %></p>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+        <%= f.text_area :content, class: "comment-field" %>
+        <%= button_tag type: "submit", class: "comment-button" do %>
+          💬 コメントする
         <% end %>
       <% end %>
-  <% else %>
-    <i class="far fa-heart"></i><%= @tweet.likes.count %>
-  <% end %>
-
-  <h2>いいねしたユーザー</h2>
-   <% @tweet.liked_users.each do |user| %>
-     <li><%= user.email %></li>
-   <% end %>
-</div>
-
-<div class="comment-wrapper">
-  <p>コメント</p>
-  <% @comments.each do |c| %>
-    <div>
-      <%= c.user.email unless c.user.blank? %>
-      <br>
-      <%= c.content %>
-    </div>
-      <br>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
-      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<ul>
-  <li><%= link_to "編集する", edit_tweet_path(@tweet.id) %></li>
-  <li><%= button_to "削除する", tweet_path(@tweet.id), method: :delete %></li>
-  <li><%= link_to "一覧ページに戻る", tweets_path %></li>
-</ul>
+  <div class="back-links">
+    <%= link_to "編集する", edit_tweet_path(@tweet.id), class: "cute-link" %>
+    <%= link_to "削除する", tweet_path(@tweet.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "cute-link delete" %>
+    <%= link_to "一覧に戻る", tweets_path, class: "cute-link" %>
+  </div>
+</div>

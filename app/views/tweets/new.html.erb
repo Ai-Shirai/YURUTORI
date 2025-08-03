@@ -1,7 +1,9 @@
 <%= stylesheet_link_tag 'new', :media => "all" %>
-<div class="post-container">
+<div class="new-post-wrapper">
+ <div class="new-post-box">
     <p class="title">新規投稿</p>
- <%= form_for @tweet do |f| %>
+
+    <%= form_for @tweet do |f| %>
 
   <div class="field">
     <%= f.label :観光地名 %>
@@ -39,9 +41,6 @@
   </div>
 
   <div id="map" style="height: 300px; margin-bottom: 10px;"></div>
-
-  <%= f.text_field :name %>
-  <%= f.text_area :detail %>
 
   <%= f.hidden_field :lat, id: 'lat' %>
   <%= f.hidden_field :lng, id: 'lng' %>
@@ -85,8 +84,11 @@
 
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRKeozR0WtnEJnb3MDcsmgHMWp-2LEe4o&callback=initMap" async defer></script>
 
-  <%= f.submit "投稿する" %>
+  <div class='form-submit'>
+    <%= f.submit "投稿する", class: "cuty-button" %>
+  </div>
   <% end %>
+ </div> 
 </div>
 
 <%= link_to "一覧に戻る", tweets_path %>

@@ -1,58 +1,63 @@
-<%= form_for(@diagnosis, class: 'form-horizontal', role: 'form') do |f| %>
-    <div class="diagnosis-container">
-        <div class="col-12">
-            <p>Q1. 一人旅には…</p>
-        </div>
-        <div class="col-6">
-          <label for="custom_id1">
-            <%= f.radio_button :question1, "1", id: "custom_id1" %>
-            慣れていない
-          </label>
-          <label for="custom_id2">
-            <%= f.radio_button :question1, "2", id: "custom_id2" %>
-            慣れている
-          </label>
-        </div>
-        <div class="col-12">
-            <p>Q2. 今回の旅行では…</p>
-        </div> 
-        <div class="col-6">
-          <label for="custom_id3">
-            <%= f.radio_button :question2, "1", id: "custom_id3" %>
-            ゆっくりして癒されたい
-          </label>
-          <label for="custom_id4">
-            <%= f.radio_button :question2, "2", id: "custom_id4" %>
-            体を動かしてリフレッシュしたい
-          </label>
-        </div>   
-        <div class="col-12">
-            <p>Q3. どちらかといえば…</p>
-        </div>
-        <div class="col-6">
-          <label for="custom_id5">
-            <%= f.radio_button :question3, "1", id: "custom_id5" %>
-            まず行動する方だ
-          </label>
-          <label for="custom_id6">
-            <%= f.radio_button :question3, "2", id: "custom_id6" %>
-            じっくり考える方だ
-          </label>
-        </div>
-    
-        <div class="col-12">
-            <p>Q4. 興味が惹かれるのは…</p>
-        </div>
-        <div class="col-6">
-          <label for="custom_id7">
-            <%= f.radio_button :question4, "1", id: "custom_id7" %>
-            食べ物がおいしい
-          </label>
-          <label for="custom_id8">
-            <%= f.radio_button :question4, "2", id: "custom_id8" %>
-            景色がきれい
-          </label>
-        </div>
-        <%= f.submit " 結果 ", class: 'cuty-button' %>
+<%= form_for(@diagnosis, class: 'diagnosis-form') do |f| %>
+  <div class="diagnosis-container">
+    <div class="question">
+      <p>Q1. 一人旅には…</p>
+      <div class="options">
+        <label for="q1_1">
+          <%= f.radio_button :question1, "1", id: "q1_1" %>
+          慣れていない
+        </label>
+        <label for="q1_2">
+          <%= f.radio_button :question1, "2", id: "q1_2" %>
+          慣れている
+        </label>
+      </div>
     </div>
+
+    <div class="question">
+      <p>Q2. 今回の旅行では…</p>
+      <div class="options">
+        <label for="q2_1">
+          <%= f.radio_button :question2, "1", id: "q2_1" %>
+          ゆっくりして癒されたい
+        </label>
+        <label for="q2_2">
+          <%= f.radio_button :question2, "2", id: "q2_2" %>
+          体を動かしてリフレッシュしたい
+        </label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>Q3. どちらかといえば…</p>
+      <div class="options">
+        <label for="q3_1">
+          <%= f.radio_button :question3, "1", id: "q3_1" %>
+          まず行動する方だ
+        </label>
+        <label for="q3_2">
+          <%= f.radio_button :question3, "2", id: "q3_2" %>
+          じっくり考える方だ
+        </label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>Q4.  興味が惹かれるのは…</p>
+      <div class="options">
+        <label for="q4_1">
+          <%= f.radio_button :question4, "1", id: "q4_1" %>
+          食べ物がおいしい
+        </label>
+        <label for="q4_2">
+          <%= f.radio_button :question4, "2", id: "q4_2" %>
+          景色がきれい
+        </label>
+      </div>
+    </div>
+
+    <div class="submit-wrapper">
+      <%= f.submit "診断する", class: 'cuty-button' %>
+    </div>
+  </div>
 <% end %>

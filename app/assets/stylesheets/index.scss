@@ -43,13 +43,14 @@
   font-size: 30px;
   color: #3b352d;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .diagnose h4 {
   font-size: 17px;
   color: #3b352d;
   line-height: 1.8;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .cuty-button {
@@ -95,7 +96,7 @@
   margin-top: 130px;
   text-align: center;
   line-height: 1.0;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .t-list {
@@ -111,7 +112,7 @@
   color: #4d4237;
   font-size: 20px;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: color 0.1s ease;
 }
 
 .t-link:hover {
@@ -156,30 +157,37 @@
 }
 
 .button-wrapper {
-  max-width: 1200px;
-  text-align: right;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .search-button {
-  padding: 10px;
-  font-size: 15px !important; 
-  font-weight: bold;
-  border-radius: 6px;
-  background-color: #fce4ec;
-  color: #4b3f34;
-  border: 2px solid #d0a7b6;
-  font-family: 'Noto Sans JP', sans-serif;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 10px 18px;
+  font-size: 12px;
+  font-family: 'Shippori Mincho B1', serif;
+  font-weight: 400;
+  background-color: transparent;
+  color: #7e6a57;
+  border: 1px solid #d5c9c1;
+  border-radius: 999px;
   cursor: pointer;
   line-height: 1;
-  width: auto;
-  max-width: 100px;
   display: inline-block;
   box-sizing: border-box;
+  width: auto;
+  max-width: fit-content;
 }
 
 .search-button:hover {
-  background-color: #f7b3cb;
-  color: white;
+  background-color: #f3f0ee;
+  color: #4a3f35;
+  border-color: #b9a89d;
 }
 
 .tweets-container{
@@ -192,10 +200,19 @@
   padding: 0 20px;
 }
 
+.place-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 6px 0 4px;
+  color: #4a3f35;
+  font-family: 'Kiwi Maru', serif;
+}
+
+
 .tweet {
   width: 30%;
   max-width: 280px;
-  background: white;
+  background: rgb(255, 255, 255);
   padding: 10px 10px 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
@@ -210,3 +227,61 @@
   border-radius: 4px;
   margin-bottom: 8px;
 }
+
+
+.tag-group {
+  margin-top: 8px;
+}
+
+.tag-badge {
+  display: inline-block;
+  background-color: #f3f0ee;
+  border: 1px solid #d5c9c1;
+  color: #7e6a57;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin: 2px 4px 0 0;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+
+
+.like-button {
+  margin-top: 8px;
+  i {
+    color: #a97487;
+    margin-right: 4px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: #7e6a57;
+    cursor: pointer;
+
+    &:hover {
+      color: #a97487;
+    }
+  }
+}
+
+.detail-link {
+  margin-top: 10px;
+
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #7e6a57;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #a97487;
+      color: #a97487;
+    }
+  }
+}
+

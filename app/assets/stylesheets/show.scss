@@ -1,0 +1,152 @@
+.tweet-detail-wrapper {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.tweet-detail-box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  line-height: 1.8;
+}
+
+.detail-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.spot-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4a3f35;
+  margin-bottom: 10px;
+}
+
+.tag-group {
+  margin-top: 10px;
+}
+
+.tag-badge {
+  display: inline-block;
+  background-color: #f3f0ee;
+  border: 1px solid #d5c9c1;
+  color: #7e6a57;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin: 2px 4px 0 0;
+}
+
+
+
+
+
+
+
+
+
+.like-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.like-button {
+  background-color: white;
+  color: #a97487;
+  border: 1px solid #d5c9c1;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.like-button:hover {
+  background-color: #f8f5f2;
+  border-color: #c2b4aa;
+  color: #7e6a57;
+}
+
+.comment-wrapper {
+    margin-top: 40px;
+}
+
+
+.comment-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.comment-date {
+  font-size: 0.85em;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.comment-content {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.comment-field {
+  width: 100%;
+  height: 60px;
+  margin-top: 10px;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.comment-button {
+  margin-top: 8px;
+  padding: 6px 16px;
+  font-size: 14px;
+  background-color: #f3f0ee;
+  color: #4a3f35;
+  border: 1px solid #d5c9c1;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.back-links {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+.cute-link {
+  margin: 0 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #d5c9c1;
+  text-decoration: none;
+  color: #7e6a57;
+  background-color: #f3f0ee;
+  transition: 0.2s;
+}
+
+.cute-link:hover {
+  background-color: #e8e1dc;
+}
+
+.cute-link.delete {
+  color: #a66;
+  border-color: #e2b5b5;
+}
+
+.detail-line p {
+  margin-bottom: 15px;
+}
