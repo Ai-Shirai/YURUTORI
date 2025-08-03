@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import "responsive";
+
 @font-face {
   font-family: 'Nikumaru';
   src: asset-url('nikumaru-font.otf') format('opentype');
