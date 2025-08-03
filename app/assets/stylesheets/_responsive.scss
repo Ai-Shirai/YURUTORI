@@ -33,22 +33,6 @@ body, p, h1, h2, h3, h4, h5, h6, span, a {
     font-size: 16px !important;
   }
 
-  /* フレックス系を縦並びに */
-  .tweets-container,
-  .tag-list {
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-
-  .tweet {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* スライドショー高さ可変 */
-  .slideshow {
-    height: auto !important;
-  }
 
   /* 余白縮小 */
   .diagnose,
@@ -59,22 +43,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, a {
     height: auto !important;
   }
 
-  /* タグの文字がはみ出さないように */
-  .tag-label {
-    width: auto !important;
-    height: auto !important;
-    padding: 6px 10px !important;
-    background-size: contain !important;
-  }
-
-  /* ボタンを画面幅いっぱいに */
-  .submit-button,
-  .cuty-button,
-  .search-button,
-  .like-button,
-  .comment-button {
-    width: 100% !important;
-    max-width: 100% !important;
-    text-align: center !important;
+  .slideshow {
+    max-height: 200px;
   }
 }
